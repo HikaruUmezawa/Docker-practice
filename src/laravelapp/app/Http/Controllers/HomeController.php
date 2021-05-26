@@ -25,4 +25,31 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function cookie()
+    {
+        return view('cookie_home');
+    }
+
+    public function cookie_forward()
+    {
+        return view('cookie_next');
+    }
+
+
+    public function cookie_next(Request $request)
+    {
+        $flag = $request->flag;
+        setcookie('flag', $flag, time()+1800, "/");
+
+        return redirect()->route('cookie_next');
+    }
+
+    public function cookie_back(Request $request)
+    {
+        $flag = $request->flag;
+        setcookie('flag', $flag, time()+1800, "/");
+
+        return redirect()->route('cookie_home');
+    }
 }

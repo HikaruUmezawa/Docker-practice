@@ -18,3 +18,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/cookie', 'HomeController@cookie')->name('cookie_home');
+
+Route::get('/cookie/next', 'HomeController@cookie_forward')->name('cookie_next');
+
+Route::post('/cookie/next', 'HomeController@cookie_next');
+
+Route::post('/cookie', 'HomeController@cookie_back');
+
